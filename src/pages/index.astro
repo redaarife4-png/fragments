@@ -1,0 +1,351 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Fragments — Reda Arif">
+  <div class="container">
+
+    <header class="topbar">
+      <div class="brand">
+        <span lang="fr">fragments</span><span lang="en">fragments</span>
+      </div>
+      <nav class="nav">
+        <a href="#maintenant"><span lang="fr">maintenant</span><span lang="en">now</span></a>
+        <a href="#ecrits"><span lang="fr">écrits</span><span lang="en">writing</span></a>
+        <a href="#avis"><span lang="fr">avis</span><span lang="en">takes</span></a>
+        <a href="#a-propos"><span lang="fr">à propos</span><span lang="en">about</span></a>
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+          <span class="label fr-label">fr</span><span class="sep">·</span><span class="label en-label">en</span>
+        </button>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>
+        <span lang="fr">Reda, <em>en notes</em></span>
+        <span lang="en">Reda, <em>taking notes</em></span>
+      </h1>
+      <div class="intro">
+        <div lang="fr">
+          <p>Salut. Je m'appelle Reda. Je vis à Montréal depuis 2018, après une enfance à Casablanca et un détour par Paris. Trois langues, deux passeports, une moto que je ne sais pas encore conduire.</p>
+          <p>Le jour, je fais de la supply chain — l'art ingrat de prédire combien de boîtes une marque va vendre pour ne manquer de rien et pas en avoir trop. Le soir, j'écris des essais trop longs, je code des outils dont personne ne se servira, et je pense beaucoup trop au prochain endroit où j'aimerais aller.</p>
+          <p>Ici tu trouveras : des essais quand un sujet me tient éveillé. Des photos quand je voyage. Des avis sans filtre quand j'en peux plus de garder mes opinions pour les apéros. Parfois juste l'album que j'écoute en boucle. Reste un peu — c'est plus intéressant que ton fil LinkedIn.</p>
+        </div>
+        <div lang="en">
+          <p>Hi. I'm Reda. I've lived in Montréal since 2018, after a childhood in Casablanca and a stint in Paris. Three languages, two passports, a motorcycle I don't yet know how to ride.</p>
+          <p>By day, I do supply chain — the unglamorous art of predicting how many boxes a brand will sell so we don't run out, and don't end up with too many. By night, I write essays that go on too long, code tools no one else will use, and think way too much about the next place I want to go.</p>
+          <p>Here you'll find: essays when a topic keeps me up. Photos when I travel. Unfiltered takes when I'm done keeping my opinions for dinner parties. Sometimes just the album I'm playing on repeat. Stick around — it's more interesting than your LinkedIn feed.</p>
+        </div>
+      </div>
+      <div class="signature">
+        <span class="dot"></span>
+        <span lang="fr">Actuellement · Montréal, −4°C</span>
+        <span lang="en">Currently · Montréal, 25°F</span>
+      </div>
+    </section>
+
+    <section class="section" id="maintenant">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title">
+          <span lang="fr">Maintenant</span><span lang="en">Now</span>
+        </h2>
+        <span class="section-meta">
+          <span lang="fr">m.à.j 15.03.26</span><span lang="en">updated 03.15.26</span>
+        </span>
+      </div>
+      <ul class="now-list" lang="fr">
+        <li>En recherche active d'un poste en planification ou en conseil. <em>Préférence : Montréal, ouvert à ailleurs.</em></li>
+        <li>J'apprends à conduire une moto. Cours Classe 6A en avril.</li>
+        <li>Je relis <em>The Goal</em> de Goldratt. Différent à 30 ans qu'à 22.</li>
+        <li>J'écoute beaucoup de musique du Sahel ces temps-ci.</li>
+        <li>Je construis ce blog. Tu es en train de le lire.</li>
+        <li>Je pense au GMAT. Trop probablement. Pas encore assez sérieusement.</li>
+      </ul>
+      <ul class="now-list" lang="en">
+        <li>Actively looking for a role in planning or consulting. <em>Preference: Montréal, open to elsewhere.</em></li>
+        <li>Learning to ride a motorcycle. Class 6A course in April.</li>
+        <li>Re-reading <em>The Goal</em> by Goldratt. Hits differently at 30 than at 22.</li>
+        <li>Listening to a lot of Sahelian music these days.</li>
+        <li>Building this blog. You're reading it.</li>
+        <li>Thinking about the GMAT. Probably too much. Not seriously enough yet.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="ecrits">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title">
+          <span lang="fr">Écrits récents</span><span lang="en">Recent writing</span>
+        </h2>
+        <span class="section-meta">
+          <span lang="fr">02 / 18 entrées</span><span lang="en">02 / 18 entries</span>
+        </span>
+      </div>
+
+      <article class="post">
+        <div class="meta">
+          <span lang="fr">15 mars 2026</span><span lang="en">March 15, 2026</span>
+          <span class="sep">/</span>
+          <span lang="fr">Essai</span><span lang="en">Essay</span>
+        </div>
+        <h3>
+          <a href="/essai" lang="fr">Le mythe de la prévision parfaite</a>
+          <a href="/essai" lang="en">The myth of the perfect forecast</a>
+        </h3>
+        <p class="excerpt" lang="fr">Trois ans à essayer de gagner deux points de précision sur des forecasts mensuels, et la conclusion que je tire en partant : on optimisait la mauvaise chose.</p>
+        <p class="excerpt" lang="en">Three years chasing two points of accuracy on monthly forecasts, and the conclusion I'm leaving with: we were optimizing the wrong thing.</p>
+        <a class="read-more" href="/essai">
+          <span lang="fr">Lire →</span><span lang="en">Read →</span>
+        </a>
+      </article>
+
+      <article class="post">
+        <div class="meta">
+          <span lang="fr">02 mars 2026</span><span lang="en">March 02, 2026</span>
+          <span class="sep">/</span>
+          <span lang="fr">Carnet de voyage</span><span lang="en">Travel notebook</span>
+          <span class="sep">/</span>
+          <span lang="fr">06 photos</span><span lang="en">06 photos</span>
+        </div>
+        <h3>
+          <a href="#" lang="fr">Trois jours à Essaouira, hors-saison</a>
+          <a href="#" lang="en">Three days in Essaouira, off-season</a>
+        </h3>
+        <div class="photo photo-essaouira">
+          <span class="caption">
+            <span lang="fr">Essaouira · mars 2026</span><span lang="en">Essaouira · March 2026</span>
+          </span>
+        </div>
+        <p class="excerpt" lang="fr">Le vent, les remparts, et l'impression étrange de redécouvrir un pays qu'on croyait connaître.</p>
+        <p class="excerpt" lang="en">The wind, the ramparts, and the strange feeling of rediscovering a country you thought you knew.</p>
+        <a class="read-more" href="#">
+          <span lang="fr">Voir →</span><span lang="en">View →</span>
+        </a>
+      </article>
+
+      <a href="#" class="archive-link">
+        <span lang="fr">Toutes les entrées →</span><span lang="en">All entries →</span>
+      </a>
+    </section>
+
+    <section class="section" id="avis">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 class="section-title">
+          <span lang="fr">Avis sans filtre</span><span lang="en">Unfiltered takes</span>
+        </h2>
+        <span class="section-meta">
+          <span lang="fr">à lire avec un café</span><span lang="en">read with coffee</span>
+        </span>
+      </div>
+      <p class="avis-intro" lang="fr">Ce que je pense vraiment sur des sujets dont on ne parle pas franchement. Pas pour provoquer. Pour ne plus avoir à me taire à voix basse.</p>
+      <p class="avis-intro" lang="en">What I actually think about things people don't talk about openly. Not for shock value. Because I'm tired of muttering them under my breath.</p>
+
+      <div class="avis-list">
+        <article class="avis-item">
+          <div class="avis-tag">
+            <span lang="fr">À chaud</span><span lang="en">Hot take</span>
+          </div>
+          <div class="avis-content">
+            <h4>
+              <a href="#" lang="fr">Le MBA, ce mirage</a>
+              <a href="#" lang="en">The MBA mirage</a>
+            </h4>
+            <p lang="fr">J'ai longtemps cru qu'un MBA à 150k$ était la voie royale. Maintenant que j'ai discuté avec assez de diplômés, j'ai des doutes — et personne autour de moi n'en parle honnêtement.</p>
+            <p lang="en">I long believed a $150k MBA was the royal road. After talking to enough graduates, I have doubts — and no one around me discusses this honestly.</p>
+          </div>
+        </article>
+
+        <article class="avis-item">
+          <div class="avis-tag">
+            <span lang="fr">Honnête</span><span lang="en">Honest</span>
+          </div>
+          <div class="avis-content">
+            <h4>
+              <a href="#" lang="fr">L'intégration au Québec, vue d'en bas</a>
+              <a href="#" lang="en">Integration in Québec, from the ground up</a>
+            </h4>
+            <p lang="fr">Six ans ici, et il y a des choses qu'on dit en privé entre immigrés qu'on ne dit jamais publiquement. Je vais essayer d'en dire quelques-unes proprement.</p>
+            <p lang="en">Six years here, and there are things immigrants say privately that they never say in public. I'm going to try to say a few of them clearly.</p>
+          </div>
+        </article>
+
+        <article class="avis-item">
+          <div class="avis-tag">
+            <span lang="fr">Impopulaire</span><span lang="en">Unpopular</span>
+          </div>
+          <div class="avis-content">
+            <h4>
+              <a href="#" lang="fr">Pourquoi je n'irai plus aux événements de réseautage</a>
+              <a href="#" lang="en">Why I'm done with networking events</a>
+            </h4>
+            <p lang="fr">Et ce que je fais à la place pour rencontrer des gens utiles à ma carrière. Indice : ce n'est pas une autre application LinkedIn.</p>
+            <p lang="en">And what I do instead to meet people who matter to my career. Hint: it's not another LinkedIn app.</p>
+          </div>
+        </article>
+
+        <article class="avis-item">
+          <div class="avis-tag">
+            <span lang="fr">Tabou</span><span lang="en">Taboo</span>
+          </div>
+          <div class="avis-content">
+            <h4>
+              <a href="#" lang="fr">Sur le retour au pays qu'on n'envisage pas</a>
+              <a href="#" lang="en">On the homecoming I'm not planning</a>
+            </h4>
+            <p lang="fr">La question que les amis restés au Maroc finissent toujours par poser, et la réponse que personne ne veut entendre. Ni eux. Ni moi.</p>
+            <p lang="en">The question my friends back in Morocco always end up asking, and the answer no one wants to hear. Not them. Not me.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="rotation">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2 class="section-title">
+          <span lang="fr">En rotation</span><span lang="en">In rotation</span>
+        </h2>
+        <span class="section-meta">
+          <span lang="fr">ce mois-ci</span><span lang="en">this month</span>
+        </span>
+      </div>
+      <div class="rotation-grid">
+        <div class="rotation-col">
+          <h4><span lang="fr">Je lis</span><span lang="en">Reading</span></h4>
+          <div class="rotation-item">
+            <span class="title">The Goal</span>
+            <span class="by">Eliyahu Goldratt</span>
+          </div>
+          <div class="rotation-item">
+            <span class="title">
+              <span lang="fr">Le Pain Nu</span><span lang="en">For Bread Alone</span>
+            </span>
+            <span class="by">Mohamed Choukri</span>
+          </div>
+          <div class="rotation-item">
+            <span class="title">Slow Productivity</span>
+            <span class="by">Cal Newport</span>
+          </div>
+        </div>
+
+        <div class="rotation-col">
+          <h4><span lang="fr">J'écoute</span><span lang="en">Listening</span></h4>
+          <div class="rotation-item">
+            <span class="title">Amatssou</span>
+            <span class="by">Tinariwen</span>
+          </div>
+          <div class="rotation-item">
+            <span class="title">Ya Nass</span>
+            <span class="by">Yasmine Hamdan</span>
+          </div>
+        </div>
+
+        <div class="rotation-col">
+          <h4><span lang="fr">Je regarde</span><span lang="en">Watching</span></h4>
+          <div class="rotation-item">
+            <span class="title">Le Bureau des Légendes</span>
+            <span class="by">
+              <span lang="fr">saison 4</span><span lang="en">season 4</span>
+            </span>
+          </div>
+          <div class="rotation-item">
+            <span class="title">Free Solo</span>
+            <span class="by">
+              <span lang="fr">documentaire, 2018</span><span lang="en">documentary, 2018</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projets">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2 class="section-title">
+          <span lang="fr">Projets parallèles</span><span lang="en">Side projects</span>
+        </h2>
+        <span class="section-meta">
+          <span lang="fr">03 actifs</span><span lang="en">03 active</span>
+        </span>
+      </div>
+      <div class="projects">
+        <div class="project">
+          <div class="info">
+            <span class="label">
+              <span lang="fr">Outil — Python</span><span lang="en">Tool — Python</span>
+            </span>
+            <h4>
+              <span lang="fr">Assistant de réunion temps-réel</span>
+              <span lang="en">Real-time meeting assistant</span>
+            </h4>
+            <p lang="fr">Un petit app macOS qui transcrit ce qui se dit pendant un appel et suggère des réponses. Construit pour préparer mes entretiens.</p>
+            <p lang="en">A small macOS app that transcribes what's said during a call and suggests answers. Built to prep for my own interviews.</p>
+          </div>
+          <span class="year">2025 →</span>
+        </div>
+
+        <div class="project">
+          <div class="info">
+            <span class="label">
+              <span lang="fr">Écriture</span><span lang="en">Writing</span>
+            </span>
+            <h4>
+              <span lang="fr">Ce carnet</span><span lang="en">This notebook</span>
+            </h4>
+            <p lang="fr">Le site que tu lis. Construit avec Astro, sans CMS, sans tracker, sans newsletter qui te suit partout.</p>
+            <p lang="en">The site you're reading. Built with Astro, no CMS, no trackers, no newsletter that follows you around.</p>
+          </div>
+          <span class="year">2026 →</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="a-propos">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2 class="section-title">
+          <span lang="fr">À propos, plus longuement</span><span lang="en">More about me</span>
+        </h2>
+      </div>
+      <div class="about">
+        <div lang="fr">
+          <p>Né à Casablanca. Études d'ingénierie là-bas, puis un master à Polytechnique Montréal.</p>
+          <p>Je passe mes journées avec des chiffres — prévisions, inventaires, capacités de production. Mes soirées sont plus variées : du code pour le plaisir, des essais qui prennent un mois à finir, et la lente acceptation que je suis devenu quelqu'un qui aime l'hiver.</p>
+        </div>
+        <div lang="en">
+          <p>Born in Casablanca. Engineering studies there, then a master's at Polytechnique Montréal.</p>
+          <p>I spend my days with numbers — forecasts, inventories, production capacities. My evenings are more varied: code for fun, essays that take a month to finish, and the slow acceptance that I've become someone who likes winter.</p>
+        </div>
+
+        <div class="about-meta">
+          <div class="row">
+            <span class="key"><span lang="fr">Basé à</span><span lang="en">Based in</span></span>
+            <span class="val"><span lang="fr">Montréal, depuis 2018</span><span lang="en">Montréal, since 2018</span></span>
+          </div>
+          <div class="row">
+            <span class="key"><span lang="fr">Langues</span><span lang="en">Languages</span></span>
+            <span class="val">Français · English · العربية</span>
+          </div>
+          <div class="row">
+            <span class="key">Contact</span>
+            <span class="val"><a href="mailto:hello@redarif.com">hello@redarif.com</a></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <span lang="fr">© Reda Arif · 2026</span>
+        <span lang="en">© Reda Arif · 2026</span>
+      </div>
+      <div>
+        <a href="#">RSS</a>
+        <a href="#a-propos">Contact</a>
+      </div>
+    </footer>
+
+  </div>
+</BaseLayout>
