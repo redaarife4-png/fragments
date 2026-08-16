@@ -28,11 +28,14 @@ const { title, description = "Places, stories, and ideas worth keeping." } = Ast
       document.documentElement.lang = saved;
     })();
   </script>
+  <!-- Netlify Identity widget: handles login flow for /admin/ (Decap CMS) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <slot />
 
   <script is:inline>
+    // Language toggle
     document.getElementById('langToggle')?.addEventListener('click', function() {
       var current = document.documentElement.getAttribute('data-lang');
       var next = current === 'fr' ? 'en' : 'fr';
@@ -40,6 +43,17 @@ const { title, description = "Places, stories, and ideas worth keeping." } = Ast
       document.documentElement.lang = next;
       localStorage.setItem('blog-lang', next);
     });
+
+    // Netlify Identity: after login via invite email, redirect to /admin/
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
   </script>
 </body>
 </html>
