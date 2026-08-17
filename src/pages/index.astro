@@ -1,5 +1,23 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Load all posts, sort by date (most recent first), keep the 4 most recent
+const allPosts = await getCollection('posts');
+const recentPosts = allPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 4);
+
+// Category labels (fr / en)
+const categoryLabels: Record<string, { fr: string; en: string }> = {
+  essai: { fr: 'Essai', en: 'Essay' },
+  voyage: { fr: 'Carnet de voyage', en: 'Travel notebook' },
+  note: { fr: 'Note', en: 'Note' },
+  avis: { fr: 'Avis', en: 'Take' },
+};
+
+const formatDateFr = (d: Date) => d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+const formatDateEn = (d: Date) => d.toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' });
 ---
 
 <BaseLayout title="Fragments — Reda Arif">
@@ -79,50 +97,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span lang="fr">Écrits récents</span><span lang="en">Recent writing</span>
         </h2>
         <span class="section-meta">
-          <span lang="fr">02 / 18 entrées</span><span lang="en">02 / 18 entries</span>
+          <span lang="fr">{recentPosts.length} / {allPosts.length} entrées</span>
+          <span lang="en">{recentPosts.length} / {allPosts.length} entries</span>
         </span>
       </div>
 
-      <article class="post">
-        <div class="meta">
-          <span lang="fr">15 mars 2026</span><span lang="en">March 15, 2026</span>
-          <span class="sep">/</span>
-          <span lang="fr">Essai</span><span lang="en">Essay</span>
-        </div>
-        <h3>
-          <a href="/essai" lang="fr">Le mythe de la prévision parfaite</a>
-          <a href="/essai" lang="en">The myth of the perfect forecast</a>
-        </h3>
-        <p class="excerpt" lang="fr">Trois ans à essayer de gagner deux points de précision sur des forecasts mensuels, et la conclusion que je tire en partant : on optimisait la mauvaise chose.</p>
-        <p class="excerpt" lang="en">Three years chasing two points of accuracy on monthly forecasts, and the conclusion I'm leaving with: we were optimizing the wrong thing.</p>
-        <a class="read-more" href="/essai">
-          <span lang="fr">Lire →</span><span lang="en">Read →</span>
-        </a>
-      </article>
+      {recentPosts.map((post) => {
+        const dateObj = new Date(post.data.date);
+        const cat = categoryLabels[post.data.category] ?? { fr: post.data.category, en: post.data.category };
+        const url = `/essai/${post.id}`;
+        return (
+          <article class="post">
+            <div class="meta">
+              <span lang="fr">{formatDateFr(dateObj)}</span>
+              <span lang="en">{formatDateEn(dateObj)}</span>
+              <span class="sep">/</span>
+              <span lang="fr">{cat.fr}</span>
+              <span lang="en">{cat.en}</span>
+            </div>
+            <h3>
+              <a href={url} lang="fr">{post.data.title_fr}</a>
+              <a href={url} lang="en">{post.data.title_en}</a>
+            </h3>
+            <p class="excerpt" lang="fr">{post.data.excerpt_fr}</p>
+            <p class="excerpt" lang="en">{post.data.excerpt_en}</p>
+            <a class="read-more" href={url}>
+              <span lang="fr">Lire →</span><span lang="en">Read →</span>
+            </a>
+          </article>
+        );
+      })}
 
-      <article class="post">
-        <div class="meta">
-          <span lang="fr">02 mars 2026</span><span lang="en">March 02, 2026</span>
-          <span class="sep">/</span>
-          <span lang="fr">Carnet de voyage</span><span lang="en">Travel notebook</span>
-          <span class="sep">/</span>
-          <span lang="fr">06 photos</span><span lang="en">06 photos</span>
-        </div>
-        <h3>
-          <a href="#" lang="fr">Trois jours à Essaouira, hors-saison</a>
-          <a href="#" lang="en">Three days in Essaouira, off-season</a>
-        </h3>
-        <div class="photo photo-essaouira">
-          <span class="caption">
-            <span lang="fr">Essaouira · mars 2026</span><span lang="en">Essaouira · March 2026</span>
-          </span>
-        </div>
-        <p class="excerpt" lang="fr">Le vent, les remparts, et l'impression étrange de redécouvrir un pays qu'on croyait connaître.</p>
-        <p class="excerpt" lang="en">The wind, the ramparts, and the strange feeling of rediscovering a country you thought you knew.</p>
-        <a class="read-more" href="#">
-          <span lang="fr">Voir →</span><span lang="en">View →</span>
-        </a>
-      </article>
+      {recentPosts.length === 0 && (
+        <p style="color: var(--muted); font-style: italic;">
+          <span lang="fr">Aucun article publié pour le moment. Créez-en un via <a href="/admin/">l'admin</a>.</span>
+          <span lang="en">No articles published yet. Create one via <a href="/admin/">the admin</a>.</span>
+        </p>
+      )}
 
       <a href="#" class="archive-link">
         <span lang="fr">Toutes les entrées →</span><span lang="en">All entries →</span>

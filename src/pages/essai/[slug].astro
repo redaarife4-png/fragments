@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import { marked } from 'marked';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { data } = post;
+
+// Convert markdown body fields to HTML
+const bodyFrHtml = marked.parse(data.body_fr);
+const bodyEnHtml = marked.parse(data.body_en);
+
+// Format date differently per language
+const dateObj = new Date(data.date);
+const dateFr = dateObj.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+const dateEn = dateObj.toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' });
+
+// Category labels (fr / en)
+const categoryLabels: Record<string, { fr: string; en: string }> = {
+  essai: { fr: 'Essai', en: 'Essay' },
+  voyage: { fr: 'Carnet de voyage', en: 'Travel notebook' },
+  note: { fr: 'Note', en: 'Note' },
+  avis: { fr: 'Avis', en: 'Take' },
+};
+const catLabel = categoryLabels[data.category] ?? { fr: data.category, en: data.category };
+
+// Estimate reading time (rough: 200 words/min)
+const wordCount = data.body_fr.split(/\s+/).length;
+const readMin = Math.max(1, Math.round(wordCount / 200));
+---
+
+<BaseLayout title={`${data.title_fr} — Fragments`} description={data.excerpt_fr}>
+  <div class="container article-container">
+
+    <header class="topbar">
+      <a class="back" href="/">
+        <span lang="fr">fragments</span><span lang="en">fragments</span>
+      </a>
+      <nav class="nav">
+        <a href="/#ecrits"><span lang="fr">écrits</span><span lang="en">writing</span></a>
+        <a href="/#avis"><span lang="fr">avis</span><span lang="en">takes</span></a>
+        <a href="/#a-propos"><span lang="fr">à propos</span><span lang="en">about</span></a>
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+          <span class="label fr-label">fr</span><span class="sep">·</span><span class="label en-label">en</span>
+        </button>
+      </nav>
+    </header>
+
+    <header class="article-header">
+      <div class="meta">
+        <span lang="fr">{dateFr}</span><span lang="en">{dateEn}</span>
+        <span class="sep">/</span>
+        <span lang="fr">{catLabel.fr}</span><span lang="en">{catLabel.en}</span>
+        <span class="sep">/</span>
+        <span lang="fr">{readMin} min de lecture</span><span lang="en">{readMin} min read</span>
+      </div>
+      <h1>
+        <span lang="fr">{data.title_fr}</span>
+        <span lang="en">{data.title_en}</span>
+      </h1>
+      {data.dek_fr && <p class="dek" lang="fr">{data.dek_fr}</p>}
+      {data.dek_en && <p class="dek" lang="en">{data.dek_en}</p>}
+    </header>
+
+    <article class="article-body">
+      <div lang="fr" set:html={bodyFrHtml}></div>
+      <div lang="en" set:html={bodyEnHtml}></div>
+    </article>
+
+  </div>
+</BaseLayout>

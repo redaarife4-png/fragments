@@ -21,7 +21,10 @@ collections:
     description: "Essais, carnets de voyage, notes courtes."
     folder: "src/content/posts"
     create: true
-    slug: "{{slug}}"
+    # Use the French title as the readable identifier for filenames and summaries
+    identifier_field: title_fr
+    # Filename pattern: 2026-08-16-mon-titre-slugifie.md
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     summary: "{{title_fr}} · {{category}} · {{date | date('DD/MM/YYYY')}}"
     fields:
       - label: "Titre (FR)"
